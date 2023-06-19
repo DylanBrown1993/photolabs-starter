@@ -2,7 +2,6 @@ import React from 'react';
 import FavIcon from './FavIcon';
 import '../styles/FavBadge.scss';
 
-// a function that displays notifications for when a photo is favourited
 export const FavBadge = ({ isFavPhotoExist, hasFavorite }) => {
   if (!hasFavorite) {
     return (

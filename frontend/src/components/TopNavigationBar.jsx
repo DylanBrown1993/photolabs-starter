@@ -3,7 +3,6 @@ import FavBadge from './FavBadge';
 import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList.jsx';
 
-// a function for displaying the navigation bar (e.g. topics)
 const TopNavigation = ({ topics, favorites, fetchPhotosAndTopic }) => {
 
   return (

@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/PhotoListItem.scss';
-
-// a function for displaying favourited photos
+s
 export function FavIcon({
   width, height, fill, outlineWidth, stroke, displayAlert
 }) {

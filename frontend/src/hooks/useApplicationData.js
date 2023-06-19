@@ -6,7 +6,7 @@ const initialState = {
   selectedPhoto: '',
 };
 
-// a function that involved the functionality of multiple things such as toggling favourites and opening modals and handles different types of actions and updates
+// Various functions for varied components
 const reducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_FAVORITE':
@@ -29,7 +29,7 @@ const reducer = (state, action) => {
   }
 };
 
-// a function used to update the app state and re-render when needed
+// Updates the state and refreshes as needed
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 

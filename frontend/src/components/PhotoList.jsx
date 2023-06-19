@@ -2,7 +2,6 @@ import React from 'react';
 import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 
-// a function for displaying multiple photolistitems
 const PhotoList = (props) => {
   const list = props.photos.map((photo) =>
   

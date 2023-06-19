@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import PhotoFavButton from '../components/PhotoFavButton';
 
-// a function for displaying modals for individual photos
 export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite }) => {
   const selectedPhoto = photos.find(photo => photo.id === id); 
   const similarPhotos = selectedPhoto.similar_photos;

@@ -1,16 +1,19 @@
 import React from 'react';
+import '../styles/TopicListItem.scss';
 
-import '../styles/TopicListItem'
+const TopicListItem = ({ label, onTopicClick }) => {
+  const handleClick = () => {
+    console.log("Clicked topic label:", label);
+    onTopicClick && onTopicClick(label);
+  };
 
-const TopicListItem = () => {
-  <div className="topic-list__item">
-    {/* Insert React */}
-  </div>
-}
+  return (
+    <div className="topic-list__item" onClick={handleClick}>
+      <span>
+        <h3>{label}</h3>
+      </span>
+    </div>
+  );
+};
 
-TopicListItem.defaultProps =   {
-  "id": "1",
-  "slug": "topic-1",
-  "label": "Nature"
-}
-export default TopicListItem
+export default TopicListItem;

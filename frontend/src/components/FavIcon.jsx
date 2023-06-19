@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/PhotoListItem.scss';
 
 export function FavIcon({
   width, height, fill, outlineWidth, stroke, displayAlert

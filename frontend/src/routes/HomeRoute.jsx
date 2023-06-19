@@ -1,10 +1,28 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import '../styles/HomeRoute.scss';
+import TopNavigationBar from '../components/TopNavigationBar';
+import PhotoList from '../components/PhotoList';
 
-const HomeRoute = () => 
-  <div className="home-route">
-    {/* Insert React */}
-  </div>
+const HomeRoute = ({ topics, photos, setSelectedPhoto, setShowModal, favorites, toggleFavorite }) => {
+  const [selectedTopicId, setSelectedTopicId] = useState(null);
+
+  const handleTopicClick = (topicId) => {
+    setSelectedTopicId(topicId);
+  };
+
+  return (
+    <div className="home-route">
+      <TopNavigationBar topics={topics} favorites={favorites} onTopicClick={handleTopicClick} />
+      <PhotoList
+        photos={photos}
+        selectedTopicId={selectedTopicId}
+        setSelectedPhoto={setSelectedPhoto}
+        setShowModal={setShowModal}
+        favorites={favorites}
+        toggleFavorite={toggleFavorite}
+      />
+    </div>
+  );
+};
 
 export default HomeRoute;

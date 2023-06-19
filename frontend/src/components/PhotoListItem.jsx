@@ -1,29 +1,25 @@
-import React, { useState } from 'react';
-import PhotoDetailsModal from '../routes/PhotoDetailsModal';
+import React from 'react';
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = (props) => {
-  const openModal = (id) => {
-    props.setSelectedPhoto(id);
-    props.setShowModal(true);
+const PhotoListItem = ({ id, imageSource, username, city, country, profile, toggleFavorite, setSelectedPhoto, setShowModal }) => {
+  const openModal = () => {
+    setSelectedPhoto(id);
+    setShowModal(true);
   };
 
-  const { id, imageSource, username, location, profile, toggleFavorite } = props;
-  const city = location && location.city ? location.city : ''; 
-  const country = location && location.country ? location.country : '';
   return (
-    <div>
+    <div className="photo-list__container">
       <div className="photo-list__item">
         <PhotoFavButton photoId={id} toggleFavorite={toggleFavorite} />
-        <img onClick={() => openModal(id)} src={imageSource} alt={username} className="photo-list__image" />
-        <div className='photo-list__user-details'>
-          <img className='photo-list__user-profile' src={profile} alt={username} />
-          <div className='photo-list__user-info'>
+        <img onClick={openModal} src={imageSource} alt={username} className="photo-list__image" />
+        <div className="photo-list__user-details">
+          <img className="photo-list__user-profile" src={profile} alt={username} />
+          <div className="photo-list__user-info">
             {username}
-          </div>
-          <div className='photo-list__user-location'>
-            <h5>{city}, {country}</h5>
+            <p className="photo-list__user-location">
+              {city}, {country}
+            </p>
           </div>
         </div>
       </div>
@@ -32,4 +28,3 @@ const PhotoListItem = (props) => {
 };
 
 export default PhotoListItem;
-

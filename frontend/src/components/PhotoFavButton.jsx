@@ -1,10 +1,13 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
+
 import { FavIcon } from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
+// a function for favouriting photos
 function PhotoFavButton(props) {
   const [isClicked, setIsClicked] = useState(false);
 
+  // a function that toggles the 'isClicked' state and invokes the 'toggleFavorite' function for a specific photo id 
   const handleClick = () => {
     setIsClicked(!isClicked);
     props.toggleFavorite(props.photoId);
@@ -17,6 +20,6 @@ function PhotoFavButton(props) {
       </div>
     </div>
   );
-}
+};
 
 export default PhotoFavButton;

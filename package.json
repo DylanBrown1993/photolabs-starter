@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/DylanBrown1993/photolabs-starter/issues"
   },
-  "homepage": "https://github.com/DylanBrown1993/photolabs-starter#readme"
+  "homepage": "https://github.com/DylanBrown1993/photolabs-starter#readme",
+  "dependencies": {
+    "package": "^1.0.1"
+  }
 }

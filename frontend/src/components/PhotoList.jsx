@@ -2,24 +2,23 @@ import React from 'react';
 import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 
-const PhotoList = ({ photos, selectedTopicId, setSelectedPhoto, setShowModal, favorites, toggleFavorite }) => {
-  const filteredPhotos = selectedTopicId ? photos.filter(photo => photo.topicId === selectedTopicId) : photos;
+// a function for displaying multiple photolistitems
+const PhotoList = (props) => {
+  const list = props.photos.map((photo) =>
+  
+  <PhotoListItem 
+  setSelectedPhoto={props.setSelectedPhoto} 
+  setShowModal={props.setShowModal} 
+  key={photo.id} 
+  imageSource={photo.urls.regular} 
+  id={photo.id} username={photo.username} 
+  city={photo.location.city} 
+  country={photo.location.country} 
+  toggleFavorite={props.toggleFavorite}/>)
 
-  const list = filteredPhotos.map((photo) => (
-    <PhotoListItem
-      setSelectedPhoto={setSelectedPhoto}
-      setShowModal={setShowModal}
-      key={photo.id}
-      imageSource={photo.urls.regular}
-      id={photo.id}
-      username={photo.user.username}
-      location={photo.location}
-      profile={photo.user.profile}
-      toggleFavorite={toggleFavorite}
-    />
-  ));
-
-  return <ul className="photo-list">{list}</ul>;
+  return <ul className="photo-list">
+    {list}
+  </ul>
 };
 
-export default PhotoList;
+export default PhotoList

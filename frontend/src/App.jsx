@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import useApplicationData from './hooks/useApplicationData';
@@ -18,6 +18,7 @@ const App = () => {
   const [photos, setPhotos] = useState([]);
   const [topics, setTopics] = useState([]);
 
+  // makes a GET request to update photos and topics
   useEffect(() => {
     const fetchPhotosAndTopics = () => {
       fetch('/api/photos')
@@ -33,6 +34,7 @@ const App = () => {
       fetchPhotosAndTopics();
     }, []);
 
+    // making a request to the backend to fetch photos for a specific topic
     const fetchPhotosAndTopic = (topicId) => {
       fetch(`/api/topics/photos/${topicId}`)
         .then((response) => response.json())

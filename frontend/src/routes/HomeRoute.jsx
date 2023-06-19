@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/HomeRoute.scss';
 import TopNavigationBar from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
 
-const HomeRoute = ({ topics, photos, setSelectedPhoto, setShowModal, favorites, toggleFavorite }) => {
-  const [selectedTopicId, setSelectedTopicId] = useState(null);
 
-  const handleTopicClick = (topicId) => {
-    setSelectedTopicId(topicId);
-  };
+// a function for displaying the home page aspects such as the photos, topics, etc.
+const HomeRoute = ({topics, photos, setSelectedPhoto, setShowModal, favorites, toggleFavorite, profile, fetchPhotosAndTopic}) => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} favorites={favorites} onTopicClick={handleTopicClick} />
-      <PhotoList
-        photos={photos}
-        selectedTopicId={selectedTopicId}
-        setSelectedPhoto={setSelectedPhoto}
-        setShowModal={setShowModal}
-        favorites={favorites}
-        toggleFavorite={toggleFavorite}
-      />
+
+      <TopNavigationBar topics={topics} 
+      photos={photos} 
+      favorites={favorites} 
+      fetchPhotosAndTopic={fetchPhotosAndTopic}/>
+
+      <PhotoList fetchPhotosAndTopic={fetchPhotosAndTopic} 
+      setSelectedPhoto={setSelectedPhoto} 
+      setShowModal={setShowModal} 
+      photos={photos} 
+      favorites={favorites} 
+      toggleFavorite={toggleFavorite}/>
+      
     </div>
   );
 };
-
 export default HomeRoute;

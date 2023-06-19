@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import PhotoFavButton from '../components/PhotoFavButton';
 
+// a function for displaying modals for individual photos
 export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite }) => {
   const selectedPhoto = photos.find(photo => photo.id === id); 
   const similarPhotos = selectedPhoto.similar_photos;
@@ -21,14 +22,26 @@ export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite }) =>
           </defs>
         </svg>
       </button>
-      <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} />
-      <img src={selectedPhoto.urls.regular} alt="Selected Photo" className="photo-details-modal__image" />
+        <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} />
+      <div className="photo-details-modal__container">
+        <img src={selectedPhoto.urls.regular} alt="Selected Photo" className="photo-details-modal__image"/>
+      </div>
       <div className="photo-details-modal__header">
-        <h3> Similar Photos </h3>
-        <div className="photo-details-modal__images">
+        <p> Related Photos </p>
+        <div className="photo-details-modal__related">
           {similarPhotos && Object.values(similarPhotos).length > 0 ? (
             Object.values(similarPhotos).map((photo) => (
-              <img key={photo.id} src={photo.urls.regular} alt="Similar Photo" className="photo-details-modal__image" />
+              <div key={photo.id} className="photo-details-modal__item">
+                <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} />
+                <img src={photo.urls.regular} alt="Similar Photo" className="photo-details-modal__images" />
+                <div className='photo-list__user-details'>
+                  <img className='photo-list__user-profile' src={photo.user.profile} />
+                  <div className='photo-list__user-info'>
+                    {photo.user.username}
+                  <p className='photo-list__user-location'>{photo.location.city}, {photo.location.country}</p>
+                  </div>
+                </div>
+              </div>
           ))
           ) : (
             <p> No similar photos. </p>
@@ -36,7 +49,8 @@ export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite }) =>
         </div>
       </div>
     </div>
-  )
-}
+    
+  );
+};
 
 export default PhotoDetailsModal;

@@ -1,6 +1,11 @@
+.photo-details-modal__container {
+  display: flex;
+  justify-content: center;
+}
+
 .photo-details-modal {
   background-color: white;
-  box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
   position: absolute;
   top: 55%;
   left: 50%;
@@ -9,10 +14,8 @@
   width: 55%;
   overflow-y: scroll;
   border-radius: 12px;
-  padding: 16px;
-  border: 0.5px solid lightgray;
+  z-index: 2;
 }
-
 
 .photo-details-modal__close-button {
   background-color: white;
@@ -28,16 +31,13 @@
 }
 
 .photo-details-modal__images {
-  margin-left: 12px;
-  margin-top: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  height: 200px;
+  object-fit: cover;
 }
 
 .photo-details-modal__image {
-  width: calc(33.33% - 12px); /* Adjust the width based on the number of items per row */
-  margin-bottom: 12px; /* Add margin between the images */
+  border-radius: 8px;
+  width: 100%;
 }
 
 .photo-details-modal__top-bar {
@@ -61,4 +61,22 @@
   margin-top: 24px;
   margin-bottom: 24px;
   width: 90%;
+  font-weight: 700;
+  text-decoration: overline;
+  font-family: 'Segoe UI';
+  padding-left: 50px;
+}
+
+.photo-details-modal__item {
+  margin: 24px;
+  padding: 8px;
+  border-width: 0.5px;
+  border-color: lightgray;
+  border-style: solid;
+  border-radius: 8px;
+}
+
+.photo-details-modal__related {
+  display: flex;
+  flex-wrap: wrap;
 }

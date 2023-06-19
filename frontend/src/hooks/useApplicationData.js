@@ -6,6 +6,7 @@ const initialState = {
   selectedPhoto: '',
 };
 
+// a function that involved the functionality of multiple things such as toggling favourites and opening modals and handles different types of actions and updates
 const reducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_FAVORITE':
@@ -28,6 +29,7 @@ const reducer = (state, action) => {
   }
 };
 
+// a function used to update the app state and re-render when needed
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -35,15 +37,15 @@ const useApplicationData = () => {
     dispatch({type: 'TOGGLE_FAVORITE', id});
   };
   const closeModal = (photo) => {
-    dispatch({ type: 'SET_SELECTED_PHOTO', photo});
+    dispatch({type: 'SET_SELECTED_PHOTO', photo});
     dispatch({type: 'CLOSE_MODAL'});
   };
   const setSelectedPhoto = (photo) => {
-    dispatch({ type: 'SET_SELECTED_PHOTO', photo});
+    dispatch({type: 'SET_SELECTED_PHOTO', photo});
     dispatch({type: 'CLOSE_MODAL'});
   };
   const setShowModal = (showModal) => {
-    dispatch({ type: 'SET_SHOW_MODAL', showModal});
+    dispatch({type: 'SET_SHOW_MODAL', showModal});
   };
 
   return {

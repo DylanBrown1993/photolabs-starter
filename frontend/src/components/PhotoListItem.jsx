@@ -2,24 +2,22 @@ import React from 'react';
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ id, imageSource, username, city, country, profile, toggleFavorite, setSelectedPhoto, setShowModal }) => {
-  const openModal = () => {
-    setSelectedPhoto(id);
-    setShowModal(true);
+const PhotoListItem = (props) => {
+  const openModal = (id) => {
+    props.setSelectedPhoto(id);
+    props.setShowModal(true);
   };
-
+  
   return (
     <div className="photo-list__container">
       <div className="photo-list__item">
-        <PhotoFavButton photoId={id} toggleFavorite={toggleFavorite} />
-        <img onClick={openModal} src={imageSource} alt={username} className="photo-list__image" />
-        <div className="photo-list__user-details">
-          <img className="photo-list__user-profile" src={profile} alt={username} />
-          <div className="photo-list__user-info">
-            {username}
-            <p className="photo-list__user-location">
-              {city}, {country}
-            </p>
+        <PhotoFavButton photoId={props.id} toggleFavorite={props.toggleFavorite}/>
+        <img onClick={() => openModal(props.id)} src={props.imageSource} alt={props.username} className="photo-list__image" />
+        <div className='photo-list__user-details'>
+          <img className='photo-list__user-profile' src={props.profile} />
+          <div className='photo-list__user-info'>
+            {props.username}
+            <p className='photo-list__user-location'>{props.city}, {props.country}</p>
           </div>
         </div>
       </div>
@@ -27,4 +25,15 @@ const PhotoListItem = ({ id, imageSource, username, city, country, profile, togg
   );
 };
 
-export default PhotoListItem;
+PhotoListItem.defaultProps = {
+  "id": "1",
+  "location": {
+    "city": "Montreal",
+    "country": "Canada"
+  },
+  "imageSource": `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
+  "username": "Joe Example",
+  "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
+}
+
+export default PhotoListItem

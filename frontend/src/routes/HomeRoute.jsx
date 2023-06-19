@@ -14,7 +14,6 @@ const HomeRoute = ({topics, photos, setSelectedPhoto, setShowModal, favorites, t
       fetchPhotosAndTopic={fetchPhotosAndTopic}/>
 
       <PhotoList fetchPhotosAndTopic={fetchPhotosAndTopic} 
-
       setSelectedPhoto={setSelectedPhoto} 
       setShowModal={setShowModal} 
       photos={photos} 

@@ -2,8 +2,12 @@
   color: red;
 }
 
+.photo-list__item:hover {
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.712);
+}
+
 .photo-list--item {
-  border: 3px solid lightgray;
+  border: 3px solid lightgrey;
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
@@ -12,25 +16,19 @@
 .photo-list__item {
   margin: 24px 24px 0 24px;
   padding: 8px;
-  border-width: 0.5px;
-  border-color: lightgray;
+  border-width: 2px;
+  border-color: rgb(182, 182, 182);
   border-style: solid;
-  border-radius: 8px;
+  border-radius: 3%;
   max-width: fit-content;
   background-color: white;
 }
 
 .photo-list__image {
+  border-radius: 3%;
+  border-width: 2px;
   user-select: none;
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-}
-
-.photo-list__image {
-  border-radius: 8px 8px 0px 0px;
-  user-select: none;
-  width: 800px;
+  width: 900px;
   height: 600px;
   object-fit: cover;
 }
@@ -40,22 +38,26 @@
   border-radius: 100%;
   vertical-align: middle;
   margin-right: 8px;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
 }
 
 .photo-list__user-details {
   display: flex;
+  height: 5em;
+  justify-content: left;
+  align-items: center;
 }
 
 .photo-list__user-info {
   margin-top: 5px;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 19px;
   margin-left: 8px;
 }
 
 .photo-list__user-location {
   color: #838383;
+  font-size: 12px;
   margin: 0;
 }

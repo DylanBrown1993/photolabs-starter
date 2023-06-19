@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/PhotoListItem.scss';
-s
+
 export function FavIcon({
   width, height, fill, outlineWidth, stroke, displayAlert
 }) {

@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import '../styles/PhotoDetailsModal.scss'
+import '../styles/PhotoDetailsModal.scss';
 import PhotoFavButton from '../components/PhotoFavButton';
 
-export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite }) => {
+export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite, }) => {
   const selectedPhoto = photos.find(photo => photo.id === id); 
   const similarPhotos = selectedPhoto.similar_photos;
 
@@ -21,17 +21,19 @@ export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite }) =>
           </defs>
         </svg>
       </button>
-        <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} />
+      <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} />
       <div className="photo-details-modal__container">
         <img src={selectedPhoto.urls.regular} alt="Selected Photo" className="photo-details-modal__image"/>
       </div>
       <div className="photo-details-modal__header">
-        <p> Related Photos </p>
+        <p className="photo-details-modal__related-title"> Related Photos </p>
         <div className="photo-details-modal__related">
           {similarPhotos && Object.values(similarPhotos).length > 0 ? (
             Object.values(similarPhotos).map((photo) => (
               <div key={photo.id} className="photo-details-modal__item">
-                <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} />
+                <div className="photo-details-modal__heart">
+                  <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} />
+                </div>
                 <img src={photo.urls.regular} alt="Similar Photo" className="photo-details-modal__images" />
                 <div className='photo-list__user-details'>
                   <img className='photo-list__user-profile' src={photo.user.profile} />
@@ -53,3 +55,4 @@ export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite }) =>
 };
 
 export default PhotoDetailsModal;
+

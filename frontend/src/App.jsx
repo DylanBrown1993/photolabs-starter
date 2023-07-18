@@ -17,7 +17,6 @@ const App = () => {
 
   const [photos, setPhotos] = useState([]);
   const [topics, setTopics] = useState([]);
-  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
     const fetchPhotosAndTopics = () => {
@@ -40,21 +39,14 @@ const App = () => {
         .then((data) => setPhotos(data))
         .catch((error) => console.log("Error fetching photos by topic:", error));
     };
-  
-    return (
-      <div className="App">
-        {showModal && <PhotoDetailsModal photos={photos} id={selectedPhoto} closeModal={closeModal} toggleFavorite={toggleFavorite} />}
-        <HomeRoute
-          fetchPhotosAndTopic={fetchPhotosAndTopic}
-          setSelectedPhoto={setSelectedPhoto}
-          setShowModal={setShowModal}
-          topics={topics}
-          photos={photos}
-          toggleFavorite={toggleFavorite}
-          favorites={favorites}
-        />
-      </div>
-    );
-  };
-  
-  export default App;
+
+  return (
+    <div className="App">
+      {showModal && <PhotoDetailsModal photos={photos} id={selectedPhoto} closeModal={closeModal} toggleFavorite={toggleFavorite} />}
+      <HomeRoute fetchPhotosAndTopic={fetchPhotosAndTopic} setSelectedPhoto={setSelectedPhoto} setShowModal={setShowModal} topics={topics} photos={photos} toggleFavorite={toggleFavorite} favorites={favorites} />
+    </div>
+  );
+};
+
+
+export default App;

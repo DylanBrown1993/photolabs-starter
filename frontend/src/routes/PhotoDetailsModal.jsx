@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import PhotoFavButton from '../components/PhotoFavButton';
 
-export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite, }) => {
+export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite, favorites }) => {
   const selectedPhoto = photos.find(photo => photo.id === id); 
   const similarPhotos = selectedPhoto.similar_photos;
 
@@ -21,7 +21,7 @@ export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite, }) =
           </defs>
         </svg>
       </button>
-      <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} />
+      <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} favorites={favorites} />
       <div className="photo-details-modal__container">
         <img src={selectedPhoto.urls.regular} alt="Selected Photo" className="photo-details-modal__image"/>
       </div>
@@ -32,7 +32,7 @@ export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite, }) =
             Object.values(similarPhotos).map((photo) => (
               <div key={photo.id} className="photo-details-modal__item">
                 <div className="photo-details-modal__heart">
-                  <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} />
+                  <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} favorites={favorites} />
                 </div>
                 <img src={photo.urls.regular} alt="Similar Photo" className="photo-details-modal__images" />
                 <div className='photo-list__user-details'>

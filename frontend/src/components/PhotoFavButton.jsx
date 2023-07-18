@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { FavIcon } from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton(props) {
+function PhotoFavButton({ photoId, favorites, toggleFavorite }) {
   const [isClicked, setIsClicked] = useState(false);
+  useEffect (() => {
+    favorites && setIsClicked(favorites.includes(photoId))},
+     [favorites] ) 
   const handleClick = () => {
     setIsClicked(!isClicked);
-    props.toggleFavorite(props.photoId);
+    toggleFavorite(photoId);
   };
 
   return (

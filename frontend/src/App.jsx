@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {showModal && <PhotoDetailsModal photos={photos} id={selectedPhoto} closeModal={closeModal} toggleFavorite={toggleFavorite} />}
+      {showModal && <PhotoDetailsModal photos={photos} id={selectedPhoto} closeModal={closeModal} toggleFavorite={toggleFavorite} favorites={favorites} />}
       <HomeRoute fetchPhotosAndTopic={fetchPhotosAndTopic} setSelectedPhoto={setSelectedPhoto} setShowModal={setShowModal} topics={topics} photos={photos} toggleFavorite={toggleFavorite} favorites={favorites} />
     </div>
   );

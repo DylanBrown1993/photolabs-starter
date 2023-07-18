@@ -11,12 +11,12 @@ const PhotoListItem = (props) => {
   return (
     <div className="photo-list__container">
       <div className="photo-list__item">
-        <PhotoFavButton photoId={props.id} toggleFavorite={props.toggleFavorite}/>
+        <PhotoFavButton photoId={props.id} toggleFavorite={props.toggleFavorite} favorites={props.favorites}/>
         <img onClick={() => openModal(props.id)} src={props.imageSource} alt={props.username} className="photo-list__image" />
         <div className='photo-list__user-details'>
           <img className='photo-list__user-profile' src={props.profile} />
           <div className='photo-list__user-info'>
-            {props.username}
+            {props.name}
             <p className='photo-list__user-location'>{props.city}, {props.country}</p>
           </div>
         </div>

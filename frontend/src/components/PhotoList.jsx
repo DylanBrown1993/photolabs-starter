@@ -9,10 +9,12 @@ const PhotoList = (props) => {
   key={photo.id} 
   imageSource={photo.urls.regular} 
   id={photo.id} 
-  username={photo.username} 
+  name={photo.user.name} 
+  profile={photo.user.profile}
   city={photo.location.city} 
   country={photo.location.country} 
-  toggleFavorite={props.toggleFavorite}/>)
+  toggleFavorite={props.toggleFavorite}
+  favorites={props.favorites} />)
   
   return <ul className="photo-list">
     {list}

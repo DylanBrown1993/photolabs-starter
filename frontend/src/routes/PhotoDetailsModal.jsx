@@ -1,10 +1,25 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import PhotoFavButton from '../components/PhotoFavButton';
 
 export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite, favorites }) => {
-  const selectedPhoto = photos.find(photo => photo.id === id); 
+  const selectedPhoto = photos.find(photo => photo.id === id);
   const similarPhotos = selectedPhoto.similar_photos;
+
+  const [similarPhotoClicked, setSimilarPhotoClicked] = useState(
+    similarPhotos.reduce((acc, photo) => {
+      acc[photo.id] = favorites.includes(photo.id);
+      return acc;
+    }, {})
+  );
+
+  const handleSimilarPhotoClick = (photoId) => {
+    setSimilarPhotoClicked(prevState => ({
+      ...prevState,
+      [photoId]: !prevState[photoId]
+    }));
+    toggleFavorite(photoId);
+  };
 
   return (
     <div className='photo-details-modal'>
@@ -20,10 +35,11 @@ export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite, favo
             </clipPath>
           </defs>
         </svg>
+        X
       </button>
       <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} favorites={favorites} />
       <div className="photo-details-modal__container">
-        <img src={selectedPhoto.urls.regular} alt="Selected Photo" className="photo-details-modal__image"/>
+        <img src={selectedPhoto.urls.regular} alt="Selected Photo" className="photo-details-modal__image" />
       </div>
       <div className="photo-details-modal__header">
         <p className="photo-details-modal__related-title"> Related Photos </p>
@@ -32,27 +48,25 @@ export const PhotoDetailsModal = ({ closeModal, id, photos, toggleFavorite, favo
             Object.values(similarPhotos).map((photo) => (
               <div key={photo.id} className="photo-details-modal__item">
                 <div className="photo-details-modal__heart">
-                  <PhotoFavButton photoId={selectedPhoto.id} toggleFavorite={toggleFavorite} favorites={favorites} />
+                  <PhotoFavButton
+                    photoId={photo.id}
+                    toggleFavorite={handleSimilarPhotoClick}
+                    favorites={favorites}
+                    isClicked={similarPhotoClicked[photo.id]}
+                  />
                 </div>
                 <img src={photo.urls.regular} alt="Similar Photo" className="photo-details-modal__images" />
                 <div className='photo-list__user-details'>
-                  <img className='photo-list__user-profile' src={photo.user.profile} />
-                  <div className='photo-list__user-info'>
-                    {photo.user.username}
-                  <p className='photo-list__user-location'>{photo.location.city}, {photo.location.country}</p>
-                  </div>
                 </div>
               </div>
-          ))
+            ))
           ) : (
             <p> No similar photos. </p>
           )}
         </div>
       </div>
     </div>
-    
   );
 };
 
 export default PhotoDetailsModal;
-
